@@ -1,13 +1,14 @@
 from tkinter import *
-import parser
 from math import *
 import re
 from random import *
+import numpy as np
 
 def entry_update(sv):
     text = sv.get()
     text = text.replace("^", "**")
     text = re.sub(r'([0-9]+)\(', r'\g<1>*(', text)
+    text = re.sub(r'(x)', r'*', text)
     ## Following code literally only exists to stop the errors from flooding console
     try:
         output_label["text"] = round(eval(text), 10)
